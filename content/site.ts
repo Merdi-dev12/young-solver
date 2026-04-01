@@ -15,6 +15,47 @@ import {
   Users,
 } from 'lucide-react'
 
+export type OrchestrationTone = 'blue' | 'cyan' | 'slate' | 'amber' | 'violet'
+
+export type OrchestrationItemIcon =
+  | 'shield'
+  | 'globe'
+  | 'zap'
+  | 'arrow-left-right'
+  | 'box'
+  | 'expand'
+  | 'layers'
+  | 'clock'
+  | 'database'
+  | 'server'
+  | 'eye'
+  | 'circle'
+
+export type OrchestrationItem = {
+  icon: OrchestrationItemIcon
+  label: string
+  value: string
+  meta?: string
+  state?: 'success'
+}
+
+export type OrchestrationPanel = {
+  key: string
+  title: string
+  badge: string
+  tone: OrchestrationTone
+  items: readonly OrchestrationItem[]
+  previewRows?: readonly string[]
+  footer?: string
+}
+
+export type OrchestrationColumn = {
+  key: string
+  region: string
+  panels: readonly OrchestrationPanel[]
+  menu?: readonly string[]
+}
+
 export const HOME_SECTION_IDS = ['services', 'projects', 'about', 'contact'] as const
 
 export const SERVICE_ITEMS = [
@@ -111,7 +152,7 @@ export const SOCIAL_LINKS = [
   { href: 'mailto:youngsolver@gmail.com', icon: Mail, label: 'Email' },
 ] as const
 
-export const ORCHESTRATION_COLUMNS = [
+export const ORCHESTRATION_COLUMNS: readonly OrchestrationColumn[] = [
   {
     key: 'edge',
     region: 'Product foundation',
