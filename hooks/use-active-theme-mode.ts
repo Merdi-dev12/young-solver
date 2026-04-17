@@ -1,17 +1,12 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { useTheme } from 'next-themes'
 
 export type ActiveThemeMode = 'light' | 'black'
 
 export function useActiveThemeMode() {
   const { resolvedTheme, theme } = useTheme()
-  const [isMounted, setIsMounted] = useState(false)
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
 
   const activeThemeMode = useMemo<ActiveThemeMode>(() => {
     if (theme === 'black') {
@@ -23,11 +18,10 @@ export function useActiveThemeMode() {
     }
 
     return resolvedTheme === 'dark' ? 'black' : 'light'
-  }, [isMounted, resolvedTheme, theme])
+  }, [theme, resolvedTheme])
 
   return {
     activeThemeMode,
-    isMounted,
     resolvedTheme,
     theme,
   }

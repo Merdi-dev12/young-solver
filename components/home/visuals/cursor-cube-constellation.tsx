@@ -72,6 +72,8 @@ export function CursorCubeConstellation() {
   const { activeThemeMode } = useActiveThemeMode()
   const { viewport, pointer } = useThree()
   const groupRef = useRef<THREE.Group>(null)
+  const pointerRef = useRef({ x: 0, y: 0 })
+  const isInitializedRef = useRef(false)
 
   const themeKey = activeThemeMode === 'black' ? 'black' : 'light'
   const colors = THEME_COLORS[themeKey]
@@ -113,16 +115,22 @@ export function CursorCubeConstellation() {
 
   useFrame((state) => {
     const group = groupRef.current
-    if (!group) {
-      return
+    if (!group) return
+
+    if (!isInitializedRef.current) {
+      isInitializedRef.current = true
+      pointerRef.current = { x: 0, y: 0 }
     }
 
+    pointerRef.current.x = pointer.x || pointerRef.current.x
+    pointerRef.current.y = pointer.y || pointerRef.current.y
+
     const elapsed = state.clock.getElapsedTime()
-    group.rotation.y = THREE.MathUtils.lerp(group.rotation.y, pointer.x * 0.45, 0.06)
-    group.rotation.x = THREE.MathUtils.lerp(group.rotation.x, -pointer.y * 0.34, 0.06)
-    group.rotation.z = THREE.MathUtils.lerp(group.rotation.z, pointer.x * -0.12, 0.05)
-    group.position.x = THREE.MathUtils.lerp(group.position.x, pointer.x * 0.95, 0.08)
-    group.position.y = THREE.MathUtils.lerp(group.position.y, pointer.y * 0.65, 0.08)
+    group.rotation.y = THREE.MathUtils.lerp(group.rotation.y, pointerRef.current.x * 0.45, 0.06)
+    group.rotation.x = THREE.MathUtils.lerp(group.rotation.x, -pointerRef.current.y * 0.34, 0.06)
+    group.rotation.z = THREE.MathUtils.lerp(group.rotation.z, pointerRef.current.x * -0.12, 0.05)
+    group.position.x = THREE.MathUtils.lerp(group.position.x, pointerRef.current.x * 0.95, 0.08)
+    group.position.y = THREE.MathUtils.lerp(group.position.y, pointerRef.current.y * 0.65, 0.08)
     group.position.z = THREE.MathUtils.lerp(group.position.z, Math.sin(elapsed * 0.35) * 0.18, 0.05)
   })
 

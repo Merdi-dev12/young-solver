@@ -34,6 +34,7 @@ export function SiteLoader({ phase }: SiteLoaderProps) {
       className="fixed inset-0 z-[120] flex items-center justify-center bg-background"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: shouldReduceMotion ? 0.14 : 0.28, ease: 'easeOut' } }}
+      suppressHydrationWarning
     >
       <div className="relative flex flex-col items-center gap-7">
         <div className="relative flex h-28 w-28 items-center justify-center sm:h-32 sm:w-32">
