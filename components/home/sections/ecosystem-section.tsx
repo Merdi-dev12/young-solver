@@ -221,10 +221,6 @@ export function EcosystemSection() {
                       return (
                         <motion.article
                           key={panel.key}
-                          initial={{ opacity: 0, y: 24 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, amount: 0.18 }}
-                          transition={{ duration: 0.55, delay: index * 0.08 }}
                           whileHover={{ y: -8, scale: 1.01, rotateX: 3, rotateY: -2 }}
                           className={cn(
                             'relative overflow-hidden rounded-[24px] border bg-background/92 p-4 shadow-[0_20px_45px_rgba(0,0,0,0.08)] backdrop-blur-xl transition-shadow sm:p-5',
@@ -313,13 +309,7 @@ export function EcosystemSection() {
                   </div>
 
                   {column.menu ? (
-                    <motion.div
-                      initial={{ opacity: 0, y: 12 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.4 }}
-                      className="absolute right-4 top-4 hidden rounded-[22px] bg-black px-4 py-3 text-white shadow-[0_18px_40px_rgba(0,0,0,0.28)] xl:block"
-                    >
+                    <div className="absolute right-4 top-4 hidden rounded-[22px] bg-black px-4 py-3 text-white shadow-[0_18px_40px_rgba(0,0,0,0.28)] xl:block">
                       <div className="space-y-2">
                         {column.menu.map((menuItem) => (
                           <div key={menuItem} className="flex items-center gap-3 text-sm font-medium">
@@ -328,7 +318,7 @@ export function EcosystemSection() {
                           </div>
                         ))}
                       </div>
-                    </motion.div>
+                    </div>
                   ) : null}
                 </div>
               ))}

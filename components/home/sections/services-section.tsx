@@ -12,7 +12,7 @@ export function ServicesSection() {
     <section id="services" className="relative bg-background/72 py-24 backdrop-blur-[2px]">
       <div className="container mx-auto px-4">
         <ScrollAnimation variant="fadeUp" className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold sm:text-4xl md:text-5xl">
+          <h2 className="mb-4 text-foreground text-3xl font-bold sm:text-4xl md:text-5xl">
             {t('services.title.prefix')} <span className="text-primary">{t('services.title.highlight')}</span>
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">{t('services.description')}</p>
@@ -23,13 +23,13 @@ export function ServicesSection() {
             const Icon = serviceItem.icon
 
             return (
-              <StaggerItem key={serviceItem.key} variant="scale">
+              <StaggerItem key={serviceItem.key}>
                 <GlassCard className="group h-full">
                   <div className="flex h-full flex-col">
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20">
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
-                    <h3 className="mb-2 text-xl font-semibold">{t(`services.${serviceItem.key}.title`)}</h3>
+                    <h3 className="mb-2 text-foreground text-xl font-semibold">{t(`services.${serviceItem.key}.title`)}</h3>
                     <p className="flex-grow text-sm leading-relaxed text-muted-foreground">
                       {t(`services.${serviceItem.key}.description`)}
                     </p>
