@@ -58,9 +58,9 @@ function LanguageContextProvider({
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>('fr')
-  const [hasResolvedLanguage, setHasResolvedLanguage] = useState(false)
 
   useEffect(() => {
+    // Only resolve on client
     const searchParams = new URLSearchParams(window.location.search)
     const queryLanguage = searchParams.get('lang')
     const storedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY)
@@ -68,25 +68,15 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     if (isLanguage(queryLanguage)) {
       setLanguageState(queryLanguage)
       localStorage.setItem(LANGUAGE_STORAGE_KEY, queryLanguage)
-      setHasResolvedLanguage(true)
-      return
-    }
-
-    if (isLanguage(storedLanguage)) {
+    } else if (isLanguage(storedLanguage)) {
       setLanguageState(storedLanguage)
     }
-
-    setHasResolvedLanguage(true)
   }, [])
 
   useEffect(() => {
-    if (!hasResolvedLanguage) {
-      return
-    }
-
     document.documentElement.lang = language
     window.history.replaceState(null, '', buildLanguageUrl(language))
-  }, [hasResolvedLanguage, language])
+  }, [language])
 
   const setLanguage = useCallback((nextLanguage: Language) => {
     setLanguageState((currentLanguage) => {
