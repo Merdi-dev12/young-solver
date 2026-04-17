@@ -1,7 +1,7 @@
 'use client'
 
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { HomePage } from '@/components/home/home-page'
 import { SiteLoader } from '@/components/home/site-loader'
 
@@ -9,13 +9,21 @@ type LoaderPhase = 'spinning' | 'exploding' | 'done'
 
 export function HomeEntry() {
   const shouldReduceMotion = useReducedMotion()
-  const [loaderPhase, setLoaderPhase] = useState<LoaderPhase>('spinning')
+  const [loaderPhase, setLoaderPhase] = useState<LoaderPhase>('done')
+  const hasInitializedRef = useRef(false)
 
   useEffect(() => {
+    // Only run animation once, client-side only
+    if (hasInitializedRef.current) {
+      return
+    }
+    hasInitializedRef.current = true
+
     const spinDuration = shouldReduceMotion ? 420 : 1080
     const explodeDuration = shouldReduceMotion ? 180 : 460
 
     document.body.style.overflow = 'hidden'
+    setLoaderPhase('spinning')
 
     const explodeTimer = window.setTimeout(() => {
       setLoaderPhase('exploding')
@@ -39,6 +47,7 @@ export function HomeEntry() {
         initial={false}
         animate={loaderPhase === 'done' ? { opacity: 1, scale: 1 } : { opacity: 0 }}
         transition={{ duration: shouldReduceMotion ? 0.18 : 0.42, ease: 'easeOut' }}
+        suppressHydrationWarning
       >
         <HomePage />
       </motion.div>
