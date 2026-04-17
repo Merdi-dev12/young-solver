@@ -11,7 +11,7 @@ export function HeroScene({ className }: { className?: string }) {
 
   return (
     <CanvasStage className={className ?? 'absolute inset-0 h-full w-full'}>
-      <fog attach="fog" args={[isBlackTheme ? '#000000' : '#f8f8f8d3', 7, 22]} />
+      <fog attach="fog" args={[isBlackTheme ? '#000000' : '#f8f8f8', 7, 22]} />
       <ambientLight intensity={isBlackTheme ? 0.48 : 0.68} />
       <pointLight position={[0, 4, 6]} intensity={isBlackTheme ? 1.05 : 0.82} />
       <pointLight position={[-3, -2, 5]} intensity={isBlackTheme ? 0.36 : 0.18} color={isBlackTheme ? '#3B82F6' : '#0A0A0A'} />
