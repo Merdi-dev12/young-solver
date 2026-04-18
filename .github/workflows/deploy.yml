@@ -40,7 +40,7 @@ jobs:
 
       # 6. Run TypeScript check
       - name: Run TypeScript check
-        run: pnpm run type-check || true
+        run: pnpm run type-check
 
       # 7. Build Next.js project
       - name: Build Next.js project (Export)

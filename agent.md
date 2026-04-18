@@ -11,6 +11,7 @@
 - [x] Intégration Supabase (insertion DB).
 - [x] Envoi automatique d'emails (Notification + Accusé).
 - [x] Internationalisation FR/EN.
+- [x] Correction du bug de build (PARTNER_NAMES).
 - [x] Nettoyage automatique du build (`prebuild` script).
 
 ## Tâches à venir

@@ -67,6 +67,15 @@ export const SERVICE_ITEMS = [
 
 export const PROJECT_CATEGORIES = ['all', 'web', 'mobile', 'ai'] as const
 
+export const PARTNER_NAMES = [
+  'Next.js',
+  'React',
+  'TypeScript',
+  'Tailwind CSS',
+  'Framer Motion',
+  'Three.js',
+] as const
+
 export const SOLUTION_PRODUCTS = [
   {
     key: 'solverflow',
@@ -274,4 +283,3 @@ export const ORCHESTRATION_COLUMNS: readonly OrchestrationColumn[] = [
     ],
   },
 ] as const
-

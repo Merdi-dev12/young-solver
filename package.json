@@ -6,6 +6,7 @@
     "dev": "next dev",
     "prebuild": "node -e \"const fs = require('fs'); ['.next', 'out', '.temp'].forEach(d => fs.rmSync(d, { recursive: true, force: true }))\"",
     "build": "next build",
+    "type-check": "tsc --noEmit",
     "start": "next start",
     "lint": "eslint ."
   },
