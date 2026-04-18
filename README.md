@@ -1,338 +1,453 @@
-# Young Solver
+﻿# Young Solver — Platform Portfolio
 
-Site vitrine premium de Young Solver, construit avec Next.js, pense pour presenter les services, les solutions, les projets clients et la vision produit de l'equipe.
+> Site corporate et portfolio de **Young Solver**, agence de développement numérique.  
+> **Status:** Production · **Stack:** Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · Framer Motion · Three.js
 
-## 1. Vision du projet
+---
 
-Ce projet n'est pas un simple portfolio statique. Il a ete pense comme une vitrine de positionnement :
+## Table des matières
 
-- montrer une image technique solide
-- transmettre une sensation de produit haut de gamme
-- presenter clairement l'offre
-- mettre en avant les solutions internes et les projets clients
-- favoriser la prise de contact
+1. [Vue d'ensemble](#vue-densemble)
+2. [Stack technologique](#stack-technologique)
+3. [Architecture](#architecture)
+4. [Installation & Configuration](#installation--configuration)
+5. [Environnement](#environnement)
+6. [Design System](#design-system)
+7. [Structure & Pages](#structure--pages)
+8. [Internationalisation (i18n)](#internationalisation-i18n)
+9. [SEO & Métadonnées](#seo--métadonnées)
+10. [Déploiement](#déploiement)
+11. [Maintenance & Mises à jour](#maintenance--mises-à-jour)
 
-Le site combine une direction visuelle moderne, des animations controlees, un theming multi-mode, une base SEO propre, et une architecture suffisamment claire pour evoluer sans repartir de zero.
+---
 
-## 2. Stack utilisee
+## Vue d'ensemble
 
-### Framework et runtime
+Portfolio corporate et vitrine digitale de **Young Solver**, showcasing les services, projets clients et solutions SaaS propriétaires.
 
-- Next.js 16
-- React 19
-- TypeScript
+### Capacités
 
-### Styling et UI
+- **Services** : Développement web, apps mobiles, backend, design, IA, cloud
+- **Portefeuille** : 6+ projets clients premium
+- **Solutions** : 5 produits SaaS (SolverFlow, NovaOps, Atelier AI, VaultData, AuditFlow)
+- **Présentation** : Équipe, valeurs et compétences
+- **Lead Generation** : Formulaire de contact intégré
 
-- Tailwind CSS 4
-- CSS variables pour le theming
-- Framer Motion pour les animations
+### Caractéristiques techniques
 
-### 3D et hero visuals
+- ✅ **Bilingue** : Français / Anglais avec switcher de langue
+- ✅ **Responsive** : Mobile, tablet, desktop — optimisé tous formats
+- ✅ **Performance** : Next.js SSG/SSR, lazy-loading, image optimization
+- ✅ **SEO** : Métadonnées structurées, Open Graph, sitemap.xml, robots.txt
+- ✅ **Animations** : Framer Motion, Three.js 3D — fluidité premium
+- ✅ **Production** : Déploiement FTP automatisé via GitHub Actions
 
-- React Three Fiber
-- Three.js
+---
 
-### Theming
+## Stack technologique
 
-- next-themes
+| Technologie | Rôle |
+|---|---|
+| **Next.js 16** | Framework React fullstack — SSR, SSG, API routes |
+| **React 19** | Bibliothèque UI — hooks, fragments, composants |
+| **TypeScript** | Typage strict — zéro any, type-safe |
+| **Tailwind CSS 4** | Utility-first CSS — design system intégré |
+| **Framer Motion** | Animations fluides — transitions et scroll effects |
+| **Three.js** | Graphiques 3D — hero scene, particles, cubes interactifs |
+| **React Three Fiber** | Wrapper React pour Three.js |
+| **react-intl** | i18n — FR/EN avec traductions |
+| **Lucide React** | Bibliothèque d'icônes modernes |
+| **React Hook Form** | Gestion formulaires optimisée |
+| **Zod** | Validation schéma TypeScript |
+| **next-themes** | Mode clair/sombre avec persistance |
+| **PostCSS 8** | Transformations CSS — autoprefixer, Tailwind |
 
-### Internationalisation
+---
 
-- react-intl
+## Architecture
 
-### Utilitaires
+### Structure du projet
 
-- clsx
-- tailwind-merge
-- class-variance-authority
-
-## 3. Fonctionnalites principales
-
-### Hero immersif
-
-Le hero contient :
-
-- une scene animee en arriere-plan
-- une carte de code qui represente la stack de Young Solver
-- des CTA de navigation interne
-
-### Theming
-
-Le site gere plusieurs themes :
-
-- light
-- night
-- black
-- cyberpunk
-
-Les logos et certaines ambiances visuelles s'adaptent automatiquement au theme actif.
-
-### Internationalisation
-
-Le changement de langue est gere proprement via `react-intl`, avec une couche provider locale pour exposer :
-
-- la langue courante
-- le changement de langue
-- une API simple pour recuperer les messages
-
-### Sections metier
-
-Le site contient actuellement :
-
-- hero
-- services
-- section ecosysteme/orchestration
-- solutions / produits
-- projets clients
-- a propos
-- contact
-
-### Branding
-
-Le site utilise :
-
-- un favicon dedie
-- des logos noirs / blancs selon le theme
-- des assets projets generes pour les cartes
-
-### SEO
-
-Le projet integre deja :
-
-- metadata Next.js
-- canonical
-- Open Graph
-- Twitter cards
-- robots
-- sitemap
-- manifest
-- JSON-LD
-
-## 4. Commandes utiles
-
-```bash
-pnpm install
-pnpm dev
-pnpm build
-pnpm start
-pnpm exec tsc --noEmit
 ```
-
-## 5. Architecture du projet
-
-```text
-app/
-  layout.tsx
-  page.tsx
-  globals.css
-  manifest.ts
-  robots.ts
-  sitemap.ts
+app/                          # Pages & routes App Router (Next.js 13+)
+├── layout.tsx              # Layout racine + métadonnées globales
+├── page.tsx                # Accueil
+├── projects/               # Portefeuille
+│   ├── page.tsx
+│   ├── projects-content.tsx
+│   └── opengraph-image.tsx
+├── solutions/              # Solutions SaaS
+│   ├── page.tsx
+│   ├── solutions-content.tsx
+│   └── opengraph-image.tsx
+├── sitemap.ts              # Sitemap XML
+└── robots.ts               # robots.txt
 
 components/
-  controls/
-  home/
-    sections/
-    visuals/
-  layout/
-  seo/
-  ui/
+├── home/                   # Sections accueil
+│   ├── home-page.tsx
+│   ├── sections/           # Hero, Services, Projects, Solutions, Contact, About
+│   └── visuals/            # 3D scenes, animations
+├── layout/                 # Header, footer
+├── ui/                     # Composants réutilisables
+└── seo/                    # Structured data
 
 content/
-  site.ts
-  translations.ts
+├── site.ts                 # Configuration site, projets, solutions
+├── translations.ts         # Traductions FR/EN
+└── site-config.ts          # Constantes
 
 providers/
-  language-provider.tsx
-  theme-provider.tsx
+├── language-provider.tsx   # Context i18n
+└── theme-provider.tsx      # Context dark mode
+
+hooks/
+└── use-active-theme-mode.ts
 
 lib/
-  utils.ts
+└── utils.ts
 
 public/
-  images/
+├── images/
+└── assets/
+
+styles/
+└── globals.css             # Styles globaux Tailwind
 ```
 
-## 6. Role de chaque dossier
+### Flux de données
 
-### `app/`
+- **Pages** : SSG statique (pre-rendered à la build)
+- **Métadonnées** : Générées côté serveur (Server Components)
+- **Contenu dynamique** : Client Components avec `useLanguage()` hook
+- **i18n** : LanguageProvider en racine, accessible via hook `useLanguage()`
+- **3D/Animations** : Lazy-loaded côté client (Framer Motion, Three.js)
 
-Contient le shell applicatif Next.js :
+---
 
-- layout global
-- metadata globale
-- styles globaux
-- manifest
-- robots
-- sitemap
+## Installation & Configuration
 
-### `components/home/`
+### Prérequis
 
-Contient tout ce qui est specifique a la page d'accueil :
+- **Node.js** ≥ 22.x
+- **pnpm** ≥ 10.x
+- **Git**
 
-- sections marketing
-- carte de code
-- visuels 3D / hero
-- composition de page
-
-### `components/layout/`
-
-Contient les composants structurels globaux :
-
-- header
-- footer
-
-### `components/controls/`
-
-Contient les controleurs globaux :
-
-- selecteur de langue
-- selecteur de theme
-
-### `components/ui/`
-
-Contient les primitives reutilisables :
-
-- boutons
-- liens de scroll
-- logo
-- cartes glass
-- champs de formulaire
-
-### `components/seo/`
-
-Contient les blocs SEO reutilisables, comme le structured data.
-
-### `content/`
-
-Contient les donnees editables du site :
-
-- textes bilingues
-- listes de services
-- solutions
-- projets
-- partenaires
-- infos de contact
-
-### `providers/`
-
-Contient les providers applicatifs :
-
-- theme provider
-- language provider base sur `react-intl`
-
-## 7. Theming
-
-Le theming est pilote par :
-
-- `next-themes`
-- les variables CSS dans `app/globals.css`
-
-Cela permet :
-
-- d'adapter les couleurs globales
-- d'ajuster les glass effects
-- de gerer les logos noir/blanc selon le theme
-- de garder une base visuelle centrale et maintenable
-
-## 8. Internationalisation
-
-L'internationalisation repose sur :
-
-- `react-intl`
-- `content/translations.ts`
-- `providers/language-provider.tsx`
-
-Le provider prepare les messages a partir des traductions et expose une API simple au reste de l'interface.
-
-## 9. Animation et motion
-
-Les animations sont concentrees sur des zones a forte valeur :
-
-- hero
-- sections reveal au scroll
-- ecosysteme relie par cartes et lignes
-- bandeau partenaires
-- carte code sensible a la souris
-
-Le principe general du projet est simple :
-
-- animation utile
-- animation lisible
-- animation qui soutient le produit au lieu de distraire
-
-## 10. SEO et performance
-
-### SEO deja en place
-
-- titles et descriptions
-- canonical
-- Open Graph
-- Twitter metadata
-- robots
-- sitemap
-- structured data
-
-### Performance deja en place
-
-- chargement differe de certains visuels
-- build statique
-- theming natif base CSS
-- navigation interne sans rechargement
-- images structurees dans `public/`
-
-## 11. Modifier le contenu
-
-### Modifier un texte
-
-Aller dans :
-
-- `content/translations.ts`
-
-### Modifier les services, solutions ou projets
-
-Aller dans :
-
-- `content/site.ts`
-
-### Modifier une section
-
-Aller dans :
-
-- `components/home/sections/`
-
-### Modifier le hero
-
-Aller dans :
-
-- `components/home/sections/hero-section.tsx`
-- `components/home/code-showcase.tsx`
-- `components/home/visuals/`
-
-## 12. Verifications avant livraison
-
-Toujours lancer au minimum :
+### Setup local
 
 ```bash
-pnpm exec tsc --noEmit
+# 1. Cloner le dépôt
+git clone https://github.com/Merdi-dev12/young-solver.git
+cd young-solver
+
+# 2. Installer les dépendances
+pnpm install
+
+# 3. Copier la configuration d'environnement
+cp .env.example .env.local
+
+# 4. Démarrer le serveur local
+pnpm dev
+# → http://localhost:3000
+
+# 5. Build de production
+pnpm build
+
+# 6. Tester le build
+pnpm start
+```
+
+### Vérifications avant commit
+
+```bash
+# Linting
+pnpm lint
+
+# Type checking
+pnpm type-check
+
+# Build final
 pnpm build
 ```
 
-## 13. Principes de maintenance
+---
 
-Quand tu modifies ce projet :
+## Environnement
 
-- garde la separation entre contenu et rendu
-- evite de recoder des donnees en dur dans les composants
-- preserve la coherence visuelle
-- n'ajoute pas d'effets lourds gratuitement
-- garde le code lisible et centré produit
+Variables requises dans `.env.local` :
 
-## 14. Axes d'amelioration futurs
+```env
+# URL publique (Open Graph, metadonnées)
+NEXT_PUBLIC_SITE_URL=https://www.young-solver.com
 
-- brancher un vrai backend de formulaire
-- creer des pages SEO dediees par service
-- ajouter une vraie couche analytics si necessaire
-- nettoyer encore les dependances non utilisees
-- produire des etudes de cas plus detaillees
+# Email de contact
+NEXT_PUBLIC_CONTACT_EMAIL=contact@young-solver.com
+
+# Analytics (optionnel)
+NEXT_PUBLIC_GA_ID=G_XXXXXXXX
+```
+
+### GitHub Secrets (CI/CD FTP)
+
+Configurer dans **Settings → Secrets and variables → Actions** :
+
+```
+FTP_SERVER        = votre-domaine.com
+FTP_USERNAME      = utilisateur_ftp
+FTP_PASSWORD      = motdepasse_ftp
+FTP_PORT          = 21  (standard FTP)
+```
+
+---
+
+## Design System
+
+### Palette de couleurs
+
+| Rôle | Hex |
+|---|---|
+| Fond principal | `#020617` |
+| Arrière-plan secondaire | `#0a0a0a` |
+| Texte principal | `#ffffff` |
+| Texte secondaire | `#9ca3af` |
+| Accent primaire | `#007BFF` |
+| Succès | `#10b981` |
+| Erreur | `#ef4444` |
+
+### Typographie
+
+- **Body/Labels** : Inter (default)
+- **Headings** : Poppins (optionnel)
+
+### Composants clés
+
+| Composant | Rôle |
+|---|---|
+| `Button` | Bouton primaire/outline |
+| `Input` / `Textarea` | Champs formulaire |
+| `GlassCard` | Glassmorphism cards |
+| `ScrollAnimation` | Animations au scroll |
+| `BrandLogo` | Logo Young Solver |
+
+### Animations
+
+- **Scroll Fade-Up** : Apparition progressive
+- **Hero 3D** : Cubes interactifs (Three.js)
+- **Button Hover** : Scale + shadow
+- **Stagger** : Items en cascade
+
+---
+
+## Structure & Pages
+
+### Accueil (`/`)
+
+Sections complètes :
+
+1. **Hero** — Logo animé + titre "Construisons les solutions digitales de demain"
+2. **Services** — 4 colonnes desktop
+3. **Projets** — Grille 4 colonnes (featured) → lien vers `/projects`
+4. **Solutions** — Grille 4 colonnes (featured) → lien vers `/solutions`
+5. **À propos** — Valeurs, stats, compétences
+6. **Contact** — Formulaire + informations
+
+### Portefeuille (`/projects`)
+
+- Liste complète tous les projets (4 colonnes desktop)
+- Titre/description bilingue via i18n
+- Responsive : 1 mobile, 2 tablet, 4 desktop
+
+### Solutions (`/solutions`)
+
+- Tous les produits SaaS (4 colonnes desktop)
+- Tags et descriptions (FR/EN)
+- Même layout responsive que projets
+
+---
+
+## Internationalisation (i18n)
+
+### Langues supportées
+
+- **FR** (français) — défaut
+- **EN** (anglais)
+
+### Utilisation
+
+```typescript
+import { useLanguage } from '@/providers/language-provider'
+
+export function MyComponent() {
+  const { t, language } = useLanguage()
+  return <h1>{t('hero.title')}</h1>
+}
+```
+
+### Fichier de traductions
+
+Toutes les chaînes dans `content/translations.ts` :
+
+```typescript
+export const translations = {
+  'nav.home': { fr: 'Accueil', en: 'Home' },
+  'hero.title': { fr: 'Construisons...', en: 'Building...' },
+  // ... 100+ entrées
+}
+```
+
+### Sélecteur de langue
+
+- Switcher de drapeaux en header
+- URL query: `?lang=en`
+- Persisté en localStorage
+
+---
+
+## SEO & Métadonnées
+
+### Fichiers SEO
+
+| Fichier | Rôle |
+|---|---|
+| `app/layout.tsx` | Métadonnées globales |
+| `app/sitemap.ts` | Sitemap XML |
+| `app/robots.ts` | robots.txt |
+| `components/seo/*` | Schema.org JSON-LD |
+
+### Open Graph
+
+Chaque page inclut :
+- `og:title`, `og:description`, `og:image`
+- `og:url`, `og:type`
+- Twitter cards
+
+### Optimisations
+
+- ✅ Titres/descriptions uniques par page
+- ✅ Headings hiérarchiques (H1-H6)
+- ✅ Alt-text images
+- ✅ Liens internes avec `<Link>` Next.js
+- ✅ Mobile-friendly
+- ✅ Schema.org structuré
+
+---
+
+## Déploiement
+
+### Build & Déploiement Local
+
+```bash
+# Build
+pnpm build
+
+# Test
+pnpm start
+
+# Logs
+pnpm lint
+pnpm type-check
+```
+
+### CI/CD FTP (GitHub Actions)
+
+Workflow automatique à chaque push sur `main` :
+
+1. ✅ Checkout code
+2. ✅ Setup Node.js 22 + pnpm 10
+3. ✅ Install dependencies
+4. ✅ Type check (non-bloquant)
+5. ✅ Build Next.js
+6. ✅ Deploy `./.next/` → FTP server (port 21)
+
+**Fichier:** `.github/workflows/deploy.yml`
+
+---
+
+## Maintenance & Mises à jour
+
+### Process de modification
+
+1. **Créer une branche feature**
+   ```bash
+   git checkout -b feature/nom-modification
+   ```
+
+2. **Apporter les changements**
+   - Éditer composants, pages, contenu
+   - Ajouter traductions FR/EN si applicable
+
+3. **Vérifier localement**
+   ```bash
+   pnpm dev        # Tester en développement
+   pnpm build      # Vérifier build
+   pnpm type-check # Vérifier types
+   pnpm lint       # Vérifier linting
+   ```
+
+4. **Commit & Push**
+   ```bash
+   git add .
+   git commit -m "feat: description claire du changement"
+   git push origin feature/nom-modification
+   ```
+
+5. **Merger vers main**
+   - Créer PR sur GitHub
+   - Push automatique en production via CI/CD
+
+### Mises à jour courantes
+
+#### Ajouter un projet au portefeuille
+
+1. Éditer `content/site.ts` — ajouter entrée dans `FEATURED_PROJECTS`
+2. Ajouter traduction dans `content/translations.ts` (FR/EN)
+3. Ajouter image dans `public/images/projects/`
+
+#### Ajouter une solution SaaS
+
+1. Éditer `content/site.ts` — ajouter dans `SOLUTION_PRODUCTS`
+2. Ajouter traductions (FR/EN)
+3. Ajouter image
+
+#### Modifier un texte
+
+1. Éditer `content/translations.ts` (clé + valeurs FR/EN)
+2. Utiliser `useLanguage()` dans le composant
+
+#### Animations/Styling
+
+1. Éditer composant `.tsx`
+2. Utiliser Tailwind classes ou Framer Motion
+3. Tester `pnpm dev`
+
+### Déploiement après modifications
+
+```bash
+git push origin main
+# → GitHub Actions déclenche automatiquement :
+#   - Build Next.js
+#   - Deploy FTP (port 21)
+```
+
+---
+
+## Support & Documentation
+
+- **Framework** : [Next.js 16 Docs](https://nextjs.org)
+- **Styling** : [Tailwind CSS 4](https://tailwindcss.com)
+- **Animations** : [Framer Motion](https://www.framer.com/motion/)
+- **3D** : [Three.js](https://threejs.org) / [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/)
+
+---
+
+## Statut
+
+- **Version** : 1.0.0
+- **Statut** : Production
+- **Dernière mise à jour** : 18 avril 2026
+- **Maintenance** : Mise à jour régulière
+
+---
+
+> **Young Solver** — Construisons les solutions digitales de demain.  
+> Tous droits réservés © 2026
