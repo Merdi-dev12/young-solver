@@ -89,7 +89,7 @@ export function SiteHeader() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="flex items-center gap-3"
+              className="flex items-center gap-3 ms-5"
             >
               <ScrollLink href="#home" className="group flex items-center gap-3">
                 <motion.div whileHover={{ rotate: 180 }} transition={{ duration: 0.5 }}>

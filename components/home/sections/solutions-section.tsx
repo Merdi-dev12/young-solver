@@ -22,7 +22,7 @@ export function SolutionsSection() {
 
         <div className="flex flex-wrap justify-center gap-6">
           {SOLUTION_PRODUCTS.map((solution) => (
-            <div key={solution.key} className="w-full max-w-[18.75rem]">
+            <div key={solution.key} className="w-full md:max-w-[18.75rem]">
               <ShowcaseCard
                 title={t(`solutions.${solution.key}.title`)}
                 subtitle={t(`projects.filter.${solution.category}`)}

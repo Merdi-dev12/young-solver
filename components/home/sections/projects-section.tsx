@@ -57,7 +57,7 @@ export function ProjectsSection() {
 
         <div className="flex flex-wrap justify-center gap-6">
           {filteredProjects.map((project) => (
-            <div key={`${activeCategory}-${project.key}`} className="w-full max-w-[18.75rem]">
+            <div key={`${activeCategory}-${project.key}`} className="w-full md:max-w-[18.75rem]">
               <ShowcaseCard
                 title={t(`projects.${project.key}.title`)}
                 subtitle={t(`projects.filter.${project.category}`)}

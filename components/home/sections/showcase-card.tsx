@@ -26,7 +26,7 @@ export function ShowcaseCard({
   showGithubButton = false,
 }: ShowcaseCardProps) {
   return (
-    <article className="group flex h-full w-full max-w-[18.75rem] flex-col rounded-[1rem] border border-border/60 bg-card p-3 pb-1 shadow-[0_16px_36px_rgba(15,23,42,0.08)] transition-[background-color,border-color,color,box-shadow] dark:shadow-[0_16px_36px_rgba(0,0,0,0.2)]">
+    <article className="group flex h-full w-full max-w-none flex-col rounded-[1rem] border border-border/60 bg-card p-3 pb-1 shadow-[0_16px_36px_rgba(15,23,42,0.08)] transition-[background-color,border-color,color,box-shadow] dark:shadow-[0_16px_36px_rgba(0,0,0,0.2)] md:max-w-[18.75rem]">
       <Link
         href={href}
         className="block overflow-hidden rounded-[0.8rem] border border-border/60 bg-background"
@@ -52,15 +52,15 @@ export function ShowcaseCard({
 
         <p className="mb-4 text-[0.92rem] leading-snug text-muted-foreground">{subtitle}</p>
 
-        <p className="mb-2 max-w-[98%] text-[0.92rem] leading-[1.42] text-foreground/92">
+        <p className="mb-4 max-w-[98%] overflow-hidden text-[0.92rem] leading-[1.42] text-foreground/92 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
           {description}
         </p>
 
-        <div className={cn('flex flex-wrap gap-2', showGithubButton ? 'mt-auto mb-3' : 'mt-4 mb-0')}>
+        <div className={cn('flex flex-wrap gap-2', showGithubButton ? 'mb-3' : 'mb-0')}>
           {tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full bg-[#b6ff3b] mb-3 px-3 py-1 text-[0.74rem] font-semibold text-black"
+              className="rounded-full bg-[#b6ff3b] px-3 py-1 mb-4 text-[0.74rem] font-semibold text-black"
             >
               {tag}
             </span>
@@ -70,7 +70,7 @@ export function ShowcaseCard({
         {showGithubButton ? (
           <Link
             href={githubHref}
-            className="inline-flex h-9 w-full mb-2 items-center justify-center rounded-full bg-foreground px-4 mb-0 text-[0.92rem] font-semibold text-background transition-transform duration-200 hover:scale-[1.01]"
+            className="mt-auto inline-flex h-9 w-full mb-4 items-center justify-center rounded-full bg-foreground px-4 text-[0.92rem] font-semibold text-background transition-transform duration-200 hover:scale-[1.01]"
           >
             <Github className="mr-2 h-4 w-4 shrink-0 text-background" />
             Voir le code Github
