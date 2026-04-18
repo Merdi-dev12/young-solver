@@ -4,6 +4,7 @@ type TranslationEntry = Record<Language, string>
 
 export const translations = {
   'nav.home': { fr: 'Accueil', en: 'Home' },
+  'nav.solutions': { fr: 'Solutions', en: 'Solutions' },
   'nav.services': { fr: 'Services', en: 'Services' },
   'nav.projects': { fr: 'Projets', en: 'Projects' },
   'nav.about': { fr: 'À propos', en: 'About' },
@@ -88,6 +89,11 @@ export const translations = {
     fr: 'Un système de conformité et d\'audit pour tracer, valider et sécuriser vos processus.',
     en: 'A compliance and audit system to track, validate, and secure your processes.',
   },
+  'solutions.logicflow.title': { fr: 'LogicFlow', en: 'LogicFlow' },
+  'solutions.logicflow.description': {
+    fr: 'Une solution pour concevoir et automatiser des workflows logiques complexes entre vos services.',
+    en: 'A solution to design and automate complex logic workflows between your services.',
+  },
 
   'projects.title.prefix': { fr: 'Projets clients', en: 'Client' },
   'projects.title.highlight': { fr: 'sélectionnés', en: 'projects' },
@@ -98,7 +104,8 @@ export const translations = {
   'projects.filter.all': { fr: 'Tous', en: 'All' },
   'projects.filter.web': { fr: 'Web', en: 'Web' },
   'projects.filter.mobile': { fr: 'Mobile', en: 'Mobile' },
-  'projects.filter.ai': { fr: 'IA', en: 'AI' },
+  'projects.filter.api': { fr: 'API', en: 'API' },
+  'projects.filter.none': { fr: 'Aucun', en: 'None' },
   'projects.code': { fr: 'Code', en: 'Code' },
   'projects.demo': { fr: 'Demo', en: 'Live demo' },
   'projects.ecommerce.title': { fr: 'Plateforme e-commerce', en: 'E-commerce platform' },

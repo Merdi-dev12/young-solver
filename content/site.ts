@@ -56,7 +56,7 @@ export type OrchestrationColumn = {
   menu?: readonly string[]
 }
 
-export const HOME_SECTION_IDS = ['services', 'projects', 'about', 'contact'] as const
+export const HOME_SECTION_IDS = ['services', 'projects', 'solutions', 'about', 'contact'] as const
 
 export const SERVICE_ITEMS = [
   { icon: Code, key: 'web' },
@@ -65,7 +65,7 @@ export const SERVICE_ITEMS = [
   { icon: Palette, key: 'design' },
 ] as const
 
-export const PROJECT_CATEGORIES = ['all', 'web', 'mobile', 'ai'] as const
+export const PROJECT_CATEGORIES = ['all', 'web', 'mobile', 'api', 'none'] as const
 
 export const PARTNER_NAMES = [
   'Next.js',
@@ -79,28 +79,39 @@ export const PARTNER_NAMES = [
 export const SOLUTION_PRODUCTS = [
   {
     key: 'solverflow',
+    category: 'api',
     tags: ['Workflow', 'Automation', 'Ops'],
-    image: '/images/projects/solverflow-app.png',
+    image: 'https://image.thum.io/get/width/1200/crop/760/https://www.postman.com/',
   },
   {
     key: 'novaops',
+    category: 'web',
     tags: ['Monitoring', 'Cloud', 'Teams'],
-    image: '/images/projects/novaops-app.png',
+    image: 'https://bhoqaychlhfshwxfeznc.supabase.co/storage/v1/object/public/temporaire/Image_1.jpg',
   },
   {
     key: 'atelierai',
+    category: 'api',
     tags: ['AI', 'Content', 'Studio'],
-    image: '/images/projects/atelierai-app.png',
+    image: 'https://bhoqaychlhfshwxfeznc.supabase.co/storage/v1/object/public/temporaire/Image_2.jpeg',
   },
   {
     key: 'vaultdata',
+    category: 'api',
     tags: ['Data', 'Analytics', 'BI'],
-    image: '/images/projects/vaultdata-app.png',
+    image: 'https://bhoqaychlhfshwxfeznc.supabase.co/storage/v1/object/public/temporaire/image_3.jpg',
   },
   {
     key: 'auditflow',
+    category: 'api',
     tags: ['Audit', 'Compliance', 'Security'],
-    image: '/images/projects/auditflow-app.png',
+    image: 'https://bhoqaychlhfshwxfeznc.supabase.co/storage/v1/object/public/temporaire/image_4.jpg',
+  },
+  {
+    key: 'logicflow',
+    category: 'api',
+    tags: ['BPM', 'Logic', 'Service'],
+    image: 'https://bhoqaychlhfshwxfeznc.supabase.co/storage/v1/object/public/temporaire/image_6.jpg',
   },
 ] as const
 
@@ -108,44 +119,44 @@ export const FEATURED_PROJECTS = [
   {
     key: 'ecommerce',
     category: 'web',
-    tags: ['Next.js', 'Stripe', 'PostgreSQL'],
-    gradient: 'linear-gradient(135deg, #007BFF 0%, #00D4FF 100%)',
-    image: '/images/projects/ecommerce-app.png',
+    tags: ['Next.js', 'Stripe', 'Tailwind'],
+    gradient: 'linear-gradient(135deg, #3b82f6 0%, #2dd4bf 100%)',
+    image: 'https://image.thum.io/get/width/1200/crop/760/https://www.sonos.com/',
   },
   {
     key: 'health',
     category: 'mobile',
-    tags: ['React Native', 'TensorFlow', 'Firebase'],
-    gradient: 'linear-gradient(135deg, #00C853 0%, #B2FF59 100%)',
-    image: '/images/projects/healthtrack-app.png',
+    tags: ['React Native', 'Health', 'IA'],
+    gradient: 'linear-gradient(135deg, #10b981 0%, #34d399 100%)',
+    image: 'https://image.thum.io/get/width/1200/crop/760/https://www.nike.com/',
   },
   {
     key: 'document',
-    category: 'ai',
-    tags: ['Python', 'OpenAI', 'AWS'],
-    gradient: 'linear-gradient(135deg, #FF6B35 0%, #FFD166 100%)',
-    image: '/images/projects/docai-app.png',
+    category: 'api',
+    tags: ['AI', 'Python', 'Cloud'],
+    gradient: 'linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)',
+    image: 'https://bhoqaychlhfshwxfeznc.supabase.co/storage/v1/object/public/temporaire/image_5.jpg',
   },
   {
     key: 'dashboard',
     category: 'web',
-    tags: ['React', 'D3.js', 'Node.js'],
-    gradient: 'linear-gradient(135deg, #264653 0%, #2A9D8F 100%)',
-    image: '/images/projects/dashboard-app.png',
+    tags: ['SaaS', 'Analytics', 'Data'],
+    gradient: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)',
+    image: 'https://image.thum.io/get/width/1200/crop/760/https://www.nerdwallet.com/',
   },
   {
     key: 'logistics',
     category: 'mobile',
-    tags: ['Flutter', 'Google Maps', 'MongoDB'],
+    tags: ['Maps', 'Real-time', 'Tracking'],
     gradient: 'linear-gradient(135deg, #E76F51 0%, #F4A261 100%)',
-    image: '/images/projects/logistics-app.png',
+    image: 'https://image.thum.io/get/width/1200/crop/760/https://jobs.netflix.com/',
   },
   {
     key: 'assistant',
-    category: 'ai',
+    category: 'none',
     tags: ['GPT-4', 'LangChain', 'Redis'],
-    gradient: 'linear-gradient(135deg, #3A86FF 0%, #8338EC 100%)',
-    image: '/images/projects/assistant-app.png',
+    gradient: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)',
+    image: 'https://bhoqaychlhfshwxfeznc.supabase.co/storage/v1/object/public/temporaire/image_4.jpg',
   },
 ] as const
 
@@ -168,7 +179,7 @@ export const SOCIAL_LINKS = [
   { href: '#', icon: Github, label: 'GitHub' },
   { href: '#', icon: Linkedin, label: 'LinkedIn' },
   { href: '#', icon: Twitter, label: 'Twitter' },
-  { href: 'mailto:youngsolver@gmail.com', icon: Mail, label: 'Email' },
+  { href: 'mailto:youngsolverdrc@gmail.com', icon: Mail, label: 'Email' },
 ] as const
 
 export const ORCHESTRATION_COLUMNS: readonly OrchestrationColumn[] = [
